@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
-export class YourInterceptor implements HttpInterceptor {
+export class TokeInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) {}
 
   intercept(
@@ -27,6 +27,7 @@ export class YourInterceptor implements HttpInterceptor {
 
     req = req.clone({ url: environment.url + req.url });
 
+    console.log(req);
     return next.handle(req).pipe(
       catchError((error: HttpResponse<any>) => {
         if (error.status === 401) {
