@@ -2,8 +2,20 @@ html,
 body {
   margin: 0 !important;
   padding: 0 !important;
-  width: 100% !important;
   height: 100% !important;
   font-size: 13px !important;
   font-weight: 400;
+}
+
+input{
+  background-color: rgb(215, 215, 215);
+  border: none;
+  border-bottom: solid rgb(48, 48, 48) 1px;
+  height: 35px;
+  width: 250px;
+  border-radius: 5px 5px 0px 0px;
+}
+
+input:focus {
+  outline: rgb(205, 205, 205) double 0.5px;
 }
