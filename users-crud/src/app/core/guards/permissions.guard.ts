@@ -7,7 +7,7 @@ import {
 } from '@angular/router';
 
 export const GUARDS = {
-  ADMIN: 'admin',
+  ADMIN: 'Admin',
   USER: 'user',
 };
 
@@ -24,8 +24,8 @@ export class PermissionsGuard implements CanActivate {
   }
 
   private activateGuard(route: ActivatedRouteSnapshot): boolean {
-    if (route.data['guards'].include(this.perm)) return true;
-    this.router.navigate(['home']);
+    if (route.data['guards'].includes(this.perm)) return true;
+    this.router.navigate(['']);
     return false;
   }
 }

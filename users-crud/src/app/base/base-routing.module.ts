@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: BaseComponent,
     canActivate: [PermissionsGuard],
-    data: { guards: [GUARDS.ADMIN] },
+    data: { guards: [GUARDS.ADMIN,GUARDS.USER] },
   },
 ];
 
