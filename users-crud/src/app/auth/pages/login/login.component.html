@@ -1,5 +1,9 @@
-<form [formGroup]="loginForm">
-  <input type="text" />
-  <input type="text" />
-  <button>Login</button>
-</form>
+<main class="login-container">
+  <div>
+    <form [formGroup]="loginForm">
+      <span>Email:<input type="text" /> </span>
+      <span>Senha:<input type="text" /></span>
+      <button (click)="loginRequest()">Login</button>
+    </form>
+  </div>
+</main>

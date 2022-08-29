@@ -28,7 +28,8 @@ export class LoginComponent implements OnInit {
   loginRequest() {
     if (this.loginForm.valid) {
       this.user = this.loginForm.value;
-      this.authService.login(this.user).subscribe({ next: () => {} });
+      this.authService.login(this.user).subscribe({ next: (data) => {} });
+      return;
     }
   }
 }
