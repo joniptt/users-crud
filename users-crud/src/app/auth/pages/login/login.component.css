@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(to bottom right, rgb(92, 244, 255),rgb(202, 253, 255));
+  background-image: linear-gradient(to bottom right, rgb(26, 213, 227),rgb(202, 253, 255));
 }
 
 form{

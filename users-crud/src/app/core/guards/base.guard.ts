@@ -7,7 +7,7 @@ import {
 } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
-export class AuthGuard implements CanActivate {
+export class BaseGuard implements CanActivate {
   token = localStorage.getItem('token');
   constructor(private router: Router) {}
 
@@ -19,8 +19,8 @@ export class AuthGuard implements CanActivate {
   }
 
   private activateGuard(route: ActivatedRouteSnapshot): boolean {
-    if (!this.token) {
-      this.router.navigate(['login']);
+    if (this.token) {
+      this.router.navigate(['base']);
       return false;
     }
     return true;
