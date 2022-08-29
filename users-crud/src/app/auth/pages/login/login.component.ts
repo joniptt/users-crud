@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from '../../models/login.model';
 import { AuthService } from '../../services/auth.service';
 
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   user: User;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadForm();
@@ -28,7 +29,11 @@ export class LoginComponent implements OnInit {
   loginRequest() {
     if (this.loginForm.valid) {
       this.user = this.loginForm.value;
-      this.authService.login(this.user).subscribe({ next: (data) => {} });
+      this.authService.login(this.user).subscribe({
+        next: (data) => {
+          this.router.navigate(['base']);
+        },
+      });
       return;
     }
   }
