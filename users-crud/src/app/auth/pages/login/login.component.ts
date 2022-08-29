@@ -33,16 +33,22 @@ export class LoginComponent implements OnInit {
 
   loginRequest() {
     if (this.loginForm.valid) {
-      console.log('dawd');
       this.user = this.loginForm.value;
       this.authService.login(this.user).subscribe({
         next: (data) => {
-          this.swalService.success('Sucesso', 'Login efetuado com sucessso!');
-
-          this.router.navigate(['base']);
+          this.swalService
+            .success('Sucesso', 'Login efetuado com sucessso!', 'Confirmar')
+            .then((result) => {
+              this.router.navigate(['base']);
+            });
         },
       });
       return;
     }
+    this.swalService.warning(
+      'Aviso!',
+      'Preencha os campos corretamente!',
+      'Ok'
+    );
   }
 }

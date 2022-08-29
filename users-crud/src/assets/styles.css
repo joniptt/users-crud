@@ -31,7 +31,7 @@ button {
   cursor: pointer;
   font-weight: 500;
   border: solid rgb(7, 164, 7) 0.5px;
-  transition: all ease 0.5s;
+  transition: all 0.5s;
 }
 
 button:hover{
