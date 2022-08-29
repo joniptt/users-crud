@@ -1,8 +1,8 @@
 <main class="login-container">
   <div>
     <form [formGroup]="loginForm">
-      <span>Email:<input type="text" /> </span>
-      <span>Senha:<input type="text" /></span>
+      <span>Email:<input formControlName="email" type="text" /> </span>
+      <span>Senha:<input formControlName="password" type="text" /></span>
       <button (click)="loginRequest()">Login</button>
     </form>
   </div>
