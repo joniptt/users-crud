@@ -8,14 +8,32 @@ body {
 }
 
 input{
-  background-color: rgb(215, 215, 215);
+  background-color: rgb(232, 229, 229);
   border: none;
-  border-bottom: solid rgb(48, 48, 48) 1px;
+  border-bottom: solid rgb(54, 54, 54) 1px;
   height: 35px;
   width: 250px;
   border-radius: 5px 5px 0px 0px;
 }
 
 input:focus {
-  outline: rgb(205, 205, 205) double 0.5px;
+  outline: rgb(230, 230, 230) double 0.5px;
+}
+
+button {
+  border: none;
+  width: 100px;
+  height: 30px;
+  background-color: rgb(19, 163, 19);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: -1px 0.5px #cccccc;
+  font-weight: 500;
+  border: solid rgb(7, 164, 7) 0.5px;
+  transition: all ease 0.5s;
+}
+
+button:hover{
+  background-color: rgb(6, 137, 6);
 }
