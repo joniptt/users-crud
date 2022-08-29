@@ -11,7 +11,7 @@ const routes: Routes = [
     canActivate: [BaseGuard],
   },
   {
-    path: 'base',
+    path: '',
     loadChildren: () => import('./base/base.module').then((m) => m.BaseModule),
     canActivate: [AuthGuard],
   },
