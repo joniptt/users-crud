@@ -12,4 +12,12 @@ export class GenericService {
   getPropostas(): Observable<Propostas[]> {
     return this.http.get<Propostas[]>('propostas');
   }
+
+  deleteProposta(id: number): Observable<any> {
+    return this.http.delete(`proposta/${id}`);
+  }
+
+  patchProposta(id: number, proposta: Propostas): Observable<any> {
+    return this.http.patch<any>(`proposta/${id}`, proposta);
+  }
 }
