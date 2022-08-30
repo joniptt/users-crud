@@ -10,6 +10,7 @@ import { PropostasComponent } from './pages/propostas/propostas.component';
 import { RelatoriosComponent } from './pages/relatorios/relatorios.component';
 import { EditClientesComponent } from './pages/clientes/edit/edit-clientes/edit-clientes.component';
 import { MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { MAT_DIALOG_DATA} from '@angular/material/dialog';
     EditPropostasComponent
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
-  imports: [CommonModule, BaseRoutingModule,SharedModule],
+  imports: [CommonModule, BaseRoutingModule,SharedModule,NgxMaskModule.forRoot()],
   exports: [BaseComponent],
   providers:[{ provide: MAT_DIALOG_DATA, useValue: {} },]
   

@@ -16,7 +16,7 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
     MatDialogModule,
     FormsModule,
     MatInputModule,
-    ReactiveFormsModule,MatSelectModule,NgxMaskModule.forRoot()    ],
+    ReactiveFormsModule,MatSelectModule,],
   exports: [CommonModule, FormsModule, ReactiveFormsModule, MatDialogModule, FormsModule, MatInputModule, ReactiveFormsModule,MatSelectModule],
 })
 export class SharedModule { }

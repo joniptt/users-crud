@@ -32,7 +32,7 @@ export class GenericService {
   }
 
   insertClient(client: Client): Observable<Client> {
-    return this.http.post<Client>('clients', client);
+    return this.http.post<Client>('client', client);
   }
 
   patchClient(id: number, client: Client): Observable<any> {

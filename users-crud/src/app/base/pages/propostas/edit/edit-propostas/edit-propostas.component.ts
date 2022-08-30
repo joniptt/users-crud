@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { GenericService } from 'src/app/base/services/generic.service';
 
@@ -9,7 +9,7 @@ import { GenericService } from 'src/app/base/services/generic.service';
   styleUrls: ['./edit-propostas.component.css'],
 })
 export class EditPropostasComponent implements OnInit {
-  editProposta: FormGroup;
+  editProposta: UntypedFormGroup;
 
   constructor(
     private genericService: GenericService,
@@ -19,9 +19,9 @@ export class EditPropostasComponent implements OnInit {
   ngOnInit(): void {}
 
   editForm() {
-    this.editProposta = new FormGroup({
-      description: new FormControl('', [Validators.required]),
-      status: new FormControl('', [Validators.required]),
+    this.editProposta = new UntypedFormGroup({
+      description: new UntypedFormControl('', [Validators.required]),
+      status: new UntypedFormControl('', [Validators.required]),
     });
   }
 
