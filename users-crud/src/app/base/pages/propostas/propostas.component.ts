@@ -38,6 +38,7 @@ export class PropostasComponent implements OnInit {
           this.genericService.deleteProposta(id).subscribe({
             next: () => {
               this.swalService.success('Sucesso', 'Proposta excluida', 'Ok');
+              this.getPropostas();
             },
             error: () => {
               this.swalService.error(
@@ -53,11 +54,13 @@ export class PropostasComponent implements OnInit {
 
   openDialog(id: number): void {
     const dialogRef = this.dialog.open(EditPropostasComponent, {
-      width: '90%',
-      height: '90%',
-      data: id,
+      width: '35%',
+      height: '35%',
+      data: { id: id },
     });
 
-    dialogRef.afterClosed().subscribe((result) => {});
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getPropostas();
+    });
   }
 }

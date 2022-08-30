@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module';
 import { BaseRoutingModule } from './base-routing.module';
@@ -18,6 +18,7 @@ import { RelatoriosComponent } from './pages/relatorios/relatorios.component';
     EditPropostasComponent,
   ],
   imports: [CommonModule, BaseRoutingModule, SharedModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [BaseComponent],
 })
 export class BaseModule {}

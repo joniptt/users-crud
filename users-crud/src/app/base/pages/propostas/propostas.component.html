@@ -16,8 +16,8 @@
         <td class="p-1 text-center">{{ proposta?.description }}</td>
         <td class="p-1 text-center">{{ proposta?.status }}</td>
         <td class="p-1 d-flex justify-content-around">
-          <button (click)="openDialog()">EDITAR</button>
-          <button (click)="delete(proposta.cliente.id)" class="btn-danger">
+          <button (click)="openDialog(proposta?.id)">EDITAR</button>
+          <button (click)="delete(proposta?.id)" class="btn-danger">
             EXCLUIR
           </button>
         </td>

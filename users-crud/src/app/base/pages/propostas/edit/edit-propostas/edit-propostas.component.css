@@ -1,0 +1,26 @@
+
+div .mat-dialog-actions {
+
+}
+
+mat-form-field input {
+  width: 30%;
+  margin-bottom: 30px;
+}
+
+
+form {
+  width: 100%;
+}
+
+.cancel {
+  background-color: grey;
+  border: none;
+}
+
+
+.btns-container {
+  display: flex;
+  justify-content: end;
+  align-content: flex-end;
+}
