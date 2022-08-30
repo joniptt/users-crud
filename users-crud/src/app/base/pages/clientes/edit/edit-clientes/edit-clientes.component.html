@@ -7,7 +7,8 @@
           <label for="nome">
             Nome
           </label>
-          <input id="nome" type="text" formControlName="nome">
+          <input id="nome" type="text" formControlName="name">
+
         </div>
       </div>
       <div class="col-6">
@@ -15,7 +16,7 @@
           <label for="documento">
             Documento
           </label>
-          <input id="documento" type="number" formControlName="document">
+          <input id="documento" type="text" formControlName="document" mask="CPF_CNPJ">
         </div>
       </div>
       <div class="col-6">
@@ -31,7 +32,7 @@
           <label for="telefone">
             Telefone
           </label>
-          <input id="telefone" type="text" formControlName="telefone">
+          <input id="telefone" type="text" formControlName="phone">
         </div>
       </div>
       <div class="col-6">
@@ -61,7 +62,7 @@
   </form>
 
   <div class="w-100 d-flex justify-content-end align-items-center">
-    <button class="btn-danger">Cancelar</button>
-    <button class="ml-2">Salvar</button>
+    <button class="btn-danger" (click)="cancel()">Cancelar</button>
+    <button class="ml-2" (click)="save()" >Salvar</button>
   </div>
 </div>

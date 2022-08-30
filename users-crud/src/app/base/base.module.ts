@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module';
 import { BaseRoutingModule } from './base-routing.module';
@@ -8,6 +8,8 @@ import { ClientesComponent } from './pages/clientes/clientes.component';
 import { EditPropostasComponent } from './pages/propostas/edit/edit-propostas/edit-propostas.component';
 import { PropostasComponent } from './pages/propostas/propostas.component';
 import { RelatoriosComponent } from './pages/relatorios/relatorios.component';
+import { EditClientesComponent } from './pages/clientes/edit/edit-clientes/edit-clientes.component';
+import { MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -15,9 +17,13 @@ import { RelatoriosComponent } from './pages/relatorios/relatorios.component';
     ClientesComponent,
     PropostasComponent,
     RelatoriosComponent,
-    EditPropostasComponent,
+    EditClientesComponent,
+    EditPropostasComponent
   ],
-  imports: [CommonModule, BaseRoutingModule, SharedModule],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
+  imports: [CommonModule, BaseRoutingModule,SharedModule],
   exports: [BaseComponent],
+  providers:[{ provide: MAT_DIALOG_DATA, useValue: {} },]
+  
 })
 export class BaseModule {}

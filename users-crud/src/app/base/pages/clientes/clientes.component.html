@@ -1,7 +1,7 @@
 
 <div class="w-100">
   <div class="container-fluid d-flex justify-content-end align-items-center mb-3">
-    <button class="mr-5" (click)="openForm">CADASTRAR</button>
+    <button class="mr-5" (click)="openDialog('')">CADASTRAR</button>
   </div>
   <div class="container-fluid">
     <table class="w-100">
@@ -22,8 +22,8 @@
         <td class="p-1 text-center">{{client.phone}}</td>
         <td class="p-1 text-center">{{client.responsiblePerson}}</td>
         <td class="p-1 d-flex justify-content-around">
-          <button >EDITAR</button>
-          <button class="btn-danger">EXCLUIR</button>
+          <button (click)="edit(client)">EDITAR</button>
+          <button class="btn-danger" (click)="delete(client.id)">EXCLUIR</button>
         </td>
       </tr>
     </table>
