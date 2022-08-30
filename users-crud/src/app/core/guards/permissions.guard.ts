@@ -8,7 +8,7 @@ import {
 
 export const GUARDS = {
   ADMIN: 'Admin',
-  USER: 'user',
+  ASSISTENTE: 'Assistente',
 };
 
 @Injectable({ providedIn: 'root' })

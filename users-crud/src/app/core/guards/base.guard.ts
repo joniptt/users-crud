@@ -20,7 +20,7 @@ export class BaseGuard implements CanActivate {
 
   private activateGuard(route: ActivatedRouteSnapshot): boolean {
     if (this.token) {
-      this.router.navigate(['base']);
+      this.router.navigate(['home']);
       return false;
     }
     return true;

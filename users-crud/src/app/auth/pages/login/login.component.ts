@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
           this.swalService
             .success('Sucesso', 'Login efetuado com sucessso!', 'Confirmar')
             .then((result) => {
-              this.router.navigate(['base']);
+              this.router.navigate(['home']);
             });
         },
       });
