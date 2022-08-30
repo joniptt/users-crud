@@ -6,6 +6,7 @@ import { BaseComponent } from './base.component';
 import { ClientesComponent } from './pages/clientes/clientes.component';
 import { PropostasComponent } from './pages/propostas/propostas.component';
 import { RelatoriosComponent } from './pages/relatorios/relatorios.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [

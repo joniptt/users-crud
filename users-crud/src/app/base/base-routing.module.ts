@@ -33,6 +33,24 @@ const routes: Routes = [
     canActivate: [PermissionsGuard],
     data: { guards: [GUARDS.ADMIN, GUARDS.ASSISTENTE] },
   },
+  {
+    path: 'clientes',
+    component: ClientesComponent,
+    canActivate: [PermissionsGuard],
+    data: { guards: [GUARDS.ADMIN, GUARDS.ASSISTENTE] },
+  },
+  {
+    path: 'propostas',
+    component: PropostasComponent,
+    canActivate: [PermissionsGuard],
+    data: { guards: [GUARDS.ADMIN, GUARDS.ASSISTENTE] },
+  },
+  {
+    path: 'relatorios',
+    component: RelatoriosComponent,
+    canActivate: [PermissionsGuard],
+    data: { guards: [GUARDS.ADMIN, GUARDS.ASSISTENTE] },
+  },
 ];
 
 @NgModule({
