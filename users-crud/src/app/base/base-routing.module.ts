@@ -8,26 +8,28 @@ import { RelatoriosComponent } from './pages/relatorios/relatorios.component';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: '',
     component: BaseComponent,
-    canActivate: [PermissionsGuard],
-    data: { guards: [GUARDS.ADMIN, GUARDS.ASSISTENTE] },
-  },
-  {
-    path: 'clientes',
-    component: ClientesComponent,
-    canActivate: [PermissionsGuard],
-    data: { guards: [GUARDS.ADMIN, GUARDS.ASSISTENTE] },
-  },
-  {
-    path: 'propostas',
-    component: PropostasComponent,
-    canActivate: [PermissionsGuard],
-    data: { guards: [GUARDS.ADMIN, GUARDS.ASSISTENTE] },
-  },
-  {
-    path: 'relatorios',
-    component: RelatoriosComponent,
+    children: [
+      {
+        path: 'clientes',
+        component: ClientesComponent,
+        canActivate: [PermissionsGuard],
+        data: { guards: [GUARDS.ADMIN, GUARDS.ASSISTENTE] },
+      },
+      {
+        path: 'propostas',
+        component: PropostasComponent,
+        canActivate: [PermissionsGuard],
+        data: { guards: [GUARDS.ADMIN, GUARDS.ASSISTENTE] },
+      },
+      {
+        path: 'relatorios',
+        component: RelatoriosComponent,
+        canActivate: [PermissionsGuard],
+        data: { guards: [GUARDS.ADMIN, GUARDS.ASSISTENTE] },
+      },
+    ],
     canActivate: [PermissionsGuard],
     data: { guards: [GUARDS.ADMIN, GUARDS.ASSISTENTE] },
   },
