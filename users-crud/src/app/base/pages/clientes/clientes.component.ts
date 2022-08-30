@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MDCDialog } from '@material/dialog';
 
 @Component({
   selector: 'app-clientes',
@@ -16,6 +17,11 @@ export class ClientesComponent implements OnInit {
         this.clientes = data;
       }
     });
+  }
+
+  openForm() {
+    const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
+
   }
 
 }
