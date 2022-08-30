@@ -1,0 +1,27 @@
+<div class="w-100">
+  <div
+    class="container-fluid d-flex justify-content-end align-items-center mb-3"
+  >
+    <button class="mr-5">CADASTRAR</button>
+  </div>
+  <div class="container-fluid">
+    <table class="w-100">
+      <tr class="w-100">
+        <th class="text-center">Código</th>
+        <th class="text-center">Name</th>
+        <th class="text-center">Descrição</th>
+        <th class="text-center">Status</th>
+      </tr>
+      <tr *ngFor="let proposta of propostas" class="w-100">
+        <td>{{ proposta.cliente.id }}</td>
+        <td>{{ proposta.cliente.name }}</td>
+        <td>{{ proposta.description }}</td>
+        <td>{{ proposta.status }}</td>
+      </tr>
+      <td class="p-1 d-flex justify-content-around">
+        <button>EDITAR</button>
+        <button class="btn-danger">EXCLUIR</button>
+      </td>
+    </table>
+  </div>
+</div>
