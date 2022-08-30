@@ -1,7 +1,8 @@
-
 <div class="w-100">
-  <div class="container-fluid d-flex justify-content-end align-items-center mb-3">
-    <button class="mr-5" (click)="openForm">CADASTRAR</button>
+  <div
+    class="container-fluid d-flex justify-content-center align-items-center mb-3"
+  >
+    <button class="mt-5" (click)="(openForm)">CADASTRAR</button>
   </div>
   <div class="container-fluid">
     <table class="w-100">
@@ -14,19 +15,18 @@
         <th class="text-center">Pessoa Responsável</th>
         <th class="text-center">Ações</th>
       </tr>
-      <tr *ngFor="let client of clientes"  class="w-100">
-        <td class="p-1 text-center">{{client.id}}</td>
-        <td class="p-1 text-center">{{client.name}}</td>
-        <td class="p-1 text-center">{{client.document}}</td>
-        <td class="p-1 text-center">{{client.email}}</td>
-        <td class="p-1 text-center">{{client.phone}}</td>
-        <td class="p-1 text-center">{{client.responsiblePerson}}</td>
+      <tr *ngFor="let client of clientes" class="w-100">
+        <td class="p-1 text-center">{{ client.id }}</td>
+        <td class="p-1 text-center">{{ client.name }}</td>
+        <td class="p-1 text-center">{{ client.document }}</td>
+        <td class="p-1 text-center">{{ client.email }}</td>
+        <td class="p-1 text-center">{{ client.phone }}</td>
+        <td class="p-1 text-center">{{ client.responsiblePerson }}</td>
         <td class="p-1 d-flex justify-content-around">
-          <button >EDITAR</button>
+          <button>EDITAR</button>
           <button class="btn-danger">EXCLUIR</button>
         </td>
       </tr>
     </table>
   </div>
 </div>
-

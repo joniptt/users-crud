@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Client } from '../models/clients.model';
 import { Propostas } from '../models/propostas.model';
 
 @Injectable({
@@ -11,6 +12,10 @@ export class GenericService {
 
   getPropostas(): Observable<Propostas[]> {
     return this.http.get<Propostas[]>('propostas');
+  }
+
+  getClientes(): Observable<Client[]> {
+    return this.http.get<Client[]>('clients');
   }
 
   deleteProposta(id: number): Observable<any> {

@@ -36,11 +36,15 @@ export class LoginComponent implements OnInit {
       this.user = this.loginForm.value;
       this.authService.login(this.user).subscribe({
         next: (data) => {
-          this.swalService
-            .success('Sucesso', 'Login efetuado com sucessso!', 'Confirmar')
-            .then((result) => {
-              this.router.navigate(['home']);
-            });
+          setTimeout(() => {
+            this.swalService.success(
+              'Sucesso',
+              'Login efetuado com sucessso!',
+              'Confirmar'
+            );
+          }, 500);
+
+          this.router.navigate(['home']);
         },
       });
       return;
