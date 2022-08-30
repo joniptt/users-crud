@@ -25,4 +25,6 @@ export class GenericService {
   patchProposta(id: number, proposta: Propostas): Observable<any> {
     return this.http.patch<any>(`proposta/${id}`, proposta);
   }
+  
+
 }
