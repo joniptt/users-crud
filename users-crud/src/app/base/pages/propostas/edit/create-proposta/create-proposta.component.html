@@ -1,8 +1,8 @@
 <div class="modal-edit-container">
   <h2 class="mb-5">Cadastrar proposta</h2>
-  <mat-form-field appearance="fill">
-    <mat-label>Favorite food</mat-label>
-    <mat-select>
+
+  <mat-form-field appearance="outline">
+    <mat-select mat-input>
       <mat-option *ngFor="let cliente of clientes" [value]="cliente.id">
         {{ cliente.name }}
       </mat-option>
@@ -24,7 +24,7 @@
           <button mat-button class="cancel" mat-dialog-close>Cancelar</button>
         </div>
         <div class="ml-2">
-          <button mat-button (click)="create()">Atualizar</button>
+          <button mat-button (click)="create()">Cadastrar</button>
         </div>
       </footer>
     </form>

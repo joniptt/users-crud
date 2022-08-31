@@ -34,7 +34,7 @@ export class PropostasComponent implements OnInit {
   create() {
     const dialogRef = this.dialog.open(CreatePropostaComponent, {
       width: '35%',
-      height: '35%',
+      height: '45%',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
