@@ -92,5 +92,7 @@
       }
     }
   },
-  "defaultProject": "users-crud"
+  "cli": {
+    "analytics": false
+  }
 }

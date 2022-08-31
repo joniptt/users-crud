@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { Validators, FormControl, FormGroup } from '@angular/forms';
+import { Validators, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Client } from 'src/app/base/models/clients.model';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
@@ -13,20 +13,20 @@ import { GenericService } from 'src/app/base/services/generic.service';
   styleUrls: ['./edit-clientes.component.css']
 })
 export class EditClientesComponent implements OnInit {
-  formCliente: FormGroup;
+  formCliente: UntypedFormGroup;
   users: any = [];
   internalResponsible: any;
   constructor(public swal: SwalService, public dialogRef: MatDialogRef<EditClientesComponent>, @Inject(MAT_DIALOG_DATA) public data: Client = new Client(), private genericService: GenericService) { }
 
   ngOnInit() {
     this.loadUsers();
-    this.formCliente = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      document: new FormControl('', [Validators.required, Validators.maxLength(14), Validators.minLength(11)]),
-      phone: new FormControl('', [Validators.required, Validators.maxLength(11), Validators.minLength(11)]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      responsiblePerson: new FormControl('', [Validators.required]),
-      internalResponsible: new FormControl(0),
+    this.formCliente = new UntypedFormGroup({
+      name: new UntypedFormControl('', [Validators.required]),
+      document: new UntypedFormControl('', [Validators.required, Validators.maxLength(14), Validators.minLength(11)]),
+      phone: new UntypedFormControl('', [Validators.required, Validators.maxLength(11), Validators.minLength(11)]),
+      email: new UntypedFormControl('', [Validators.required, Validators.email]),
+      responsiblePerson: new UntypedFormControl('', [Validators.required]),
+      internalResponsible: new UntypedFormControl(0),
     })
     if (this.data) {
       console.log(this.data.internalResponsible);

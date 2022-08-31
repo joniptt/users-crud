@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Client } from 'src/app/base/models/clients.model';
 import { Propostas } from 'src/app/base/models/propostas.model';
@@ -12,7 +12,7 @@ import { SwalService } from 'src/app/shared/services/swal.service';
   styleUrls: ['./create-proposta.component.css'],
 })
 export class CreatePropostaComponent implements OnInit {
-  cadProposta: FormGroup;
+  cadProposta: UntypedFormGroup;
   clientes: Client[];
   proposta: Propostas;
 
@@ -28,9 +28,9 @@ export class CreatePropostaComponent implements OnInit {
   }
 
   createForm() {
-    this.cadProposta = new FormGroup({
-      description: new FormControl('', [Validators.required]),
-      status: new FormControl('', [Validators.required]),
+    this.cadProposta = new UntypedFormGroup({
+      description: new UntypedFormControl('', [Validators.required]),
+      status: new UntypedFormControl('', [Validators.required]),
     });
   }
 
