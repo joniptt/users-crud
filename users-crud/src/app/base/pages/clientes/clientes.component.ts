@@ -25,6 +25,7 @@ export class ClientesComponent implements OnInit {
       this.loadClientes()
     });
   }
+  
   loadClientes() {
     this.genericService.getClientes().subscribe({
       next: (data) => {
