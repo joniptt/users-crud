@@ -19,7 +19,8 @@ import { CreatePropostaComponent } from './pages/propostas/edit/create-proposta/
     PropostasComponent,
     RelatoriosComponent,
     EditClientesComponent,
-    EditPropostasComponent
+    EditPropostasComponent,
+    CreatePropostaComponent
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   imports: [CommonModule, BaseRoutingModule,SharedModule,NgxMaskModule.forRoot()],

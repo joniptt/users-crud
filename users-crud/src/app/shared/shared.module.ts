@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { NgxMaskModule, IConfig } from 'ngx-mask'
@@ -16,6 +17,7 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
     MatDialogModule,
     FormsModule,
     MatInputModule,    
+    MatFormFieldModule,
     ReactiveFormsModule,MatSelectModule,],
   exports: [CommonModule, FormsModule, ReactiveFormsModule, MatDialogModule, FormsModule, MatInputModule, ReactiveFormsModule,MatSelectModule],
 
