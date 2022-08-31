@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup,   Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { SwalService } from 'src/app/shared/services/swal.service';
@@ -12,7 +12,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  loginForm: UntypedFormGroup;
+  loginForm: FormGroup;
   user: User;
   manterLogado = false;
 
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private swalService: SwalService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.manterLogado = Boolean(this.cookies.get('manterLogado'));
@@ -32,23 +32,19 @@ export class LoginComponent implements OnInit {
   }
 
   loadForm() {
-    this.loginForm = new UntypedFormGroup({
-      email: new UntypedFormControl('', [Validators.required, Validators.email]),
-      password: new UntypedFormControl('', [Validators.required]),
+    this.loginForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required]),
     });
   }
 
   loginRequest() {
-
-
     if (this.loginForm.valid) {
       this.user = this.loginForm.value;
       this.authService.login(this.user).subscribe({
         next: (data) => {
-
           this.cookies.set('manterLogado', this.manterLogado.toString());
           this.router.navigate(['/home']);
-
         },
       });
       return;
