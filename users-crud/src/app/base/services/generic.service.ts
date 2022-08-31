@@ -14,9 +14,6 @@ export class GenericService {
     return this.http.get<Propostas[]>('propostas');
   }
 
-  getClientes(): Observable<Client[]> {
-    return this.http.get<Client[]>('clients');
-  }
 
   deleteProposta(id: number): Observable<any> {
     return this.http.delete(`proposta/${id}`);
@@ -26,7 +23,6 @@ export class GenericService {
   patchProposta(id: number, proposta: Propostas): Observable<any> {
     return this.http.patch<any>(`proposta/${id}`, proposta);
   }
-<<<<<<< HEAD
 
   getUsuarios(): Observable<any> {
     return this.http.get<any>('usuarios');
@@ -47,8 +43,5 @@ export class GenericService {
   deleteClient(id: number): Observable<any> {
     return this.http.delete(`client/${id}`);
   }
-=======
-  
 
->>>>>>> e995bf655eac9449e6070ae0fadea819c97f7b1b
 }

@@ -15,7 +15,7 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
     ReactiveFormsModule,
     MatDialogModule,
     FormsModule,
-    MatInputModule,
+    MatInputModule,    
     ReactiveFormsModule,MatSelectModule,],
   exports: [CommonModule, FormsModule, ReactiveFormsModule, MatDialogModule, FormsModule, MatInputModule, ReactiveFormsModule,MatSelectModule],
 
