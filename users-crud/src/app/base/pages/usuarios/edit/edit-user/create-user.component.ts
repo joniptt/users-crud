@@ -8,6 +8,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { User } from 'src/app/base/models/usuario.model';
 import { GenericService } from 'src/app/base/services/generic.service';
 import { SwalService } from 'src/app/shared/services/swal.service';
+import * as crypto from 'crypto';
 
 @Component({
   selector: 'app-create-user',
@@ -23,7 +24,7 @@ export class EditUserComponent implements OnInit {
     private swalService: SwalService,
     private dialogRef: MatDialogRef<EditUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { id: number }
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -59,6 +60,7 @@ export class EditUserComponent implements OnInit {
         createUser.get('name').patchValue(user.name);
         createUser.get('email').patchValue(user.email);
         createUser.get('type').patchValue(user.type);
+        createUser.get('password').patchValue(user.password);
       },
     });
   }
@@ -67,6 +69,7 @@ export class EditUserComponent implements OnInit {
     if (this.createUser.valid) {
       this.user = { ...this.createUser.value };
       if (this.data.id) {
+        if(this.user.password == this.createUser.get('password').value) delete this.user.password
         this.genericService.patchUsuario(this.data.id, this.user).subscribe({
           next: (data) => {
             this.swalService
@@ -79,7 +82,7 @@ export class EditUserComponent implements OnInit {
             this.swalService.error(
               'Error',
               error.error.message ??
-                'Ocorreu um erro ao tentar atualizar o usuario!',
+              'Ocorreu um erro ao tentar atualizar o usuario!',
               'Ok'
             );
           },
