@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-
 import { SharedModule } from '../shared/shared.module';
 import { BaseRoutingModule } from './base-routing.module';
 import { BaseComponent } from './base.component';
@@ -11,6 +10,7 @@ import { RelatoriosComponent } from './pages/relatorios/relatorios.component';
 import { EditClientesComponent } from './pages/clientes/edit/edit-clientes/edit-clientes.component';
 import { MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { NgxMaskModule } from 'ngx-mask';
+import { CreatePropostaComponent } from './pages/propostas/edit/create-proposta/create-proposta.component';
 
 @NgModule({
   declarations: [

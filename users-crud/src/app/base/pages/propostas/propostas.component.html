@@ -1,7 +1,9 @@
 <div class="w-100">
   <div
-    class="container-fluid d-flex justify-content-end align-items-center mb-3"
-  ></div>
+    class="container-fluid d-flex justify-content-center align-items-center mb-3"
+  >
+    <button (click)="create()" class="mt-5">CADASTRAR</button>
+  </div>
   <div class="container-fluid">
     <table class="w-100">
       <tr class="w-100">
@@ -9,6 +11,7 @@
         <th class="text-center">Name</th>
         <th class="text-center">Descrição</th>
         <th class="text-center">Status</th>
+        <th class="text-center">Ações</th>
       </tr>
       <tr *ngFor="let proposta of propostas" class="w-100">
         <td class="p-1 text-center">{{ proposta?.cliente?.id }}</td>
@@ -16,8 +19,8 @@
         <td class="p-1 text-center">{{ proposta?.description }}</td>
         <td class="p-1 text-center">{{ proposta?.status }}</td>
         <td class="p-1 d-flex justify-content-around">
-          <button (click)="openDialog()">EDITAR</button>
-          <button (click)="delete(proposta.cliente.id)" class="btn-danger">
+          <button (click)="update(proposta?.id)">EDITAR</button>
+          <button (click)="delete(proposta?.id)" class="btn-danger">
             EXCLUIR
           </button>
         </td>

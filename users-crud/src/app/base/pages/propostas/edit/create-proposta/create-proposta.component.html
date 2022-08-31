@@ -1,7 +1,16 @@
 <div class="modal-edit-container">
-  <h2 class="mb-5">Editar proposta</h2>
+  <h2 class="mb-5">Cadastrar proposta</h2>
+  <mat-form-field appearance="fill">
+    <mat-label>Favorite food</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let cliente of clientes" [value]="cliente.id">
+        {{ cliente.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
   <div>
-    <form [formGroup]="editProposta">
+    <form [formGroup]="cadProposta">
       <mat-form-field>
         <mat-label>Descrição</mat-label>
         <div><input mat-input formControlName="description" type="text" /></div>
@@ -15,7 +24,7 @@
           <button mat-button class="cancel" mat-dialog-close>Cancelar</button>
         </div>
         <div class="ml-2">
-          <button mat-button (click)="update()">Atualizar</button>
+          <button mat-button (click)="create()">Atualizar</button>
         </div>
       </footer>
     </form>

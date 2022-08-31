@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SwalService } from 'src/app/shared/services/swal.service';
 import { Propostas } from '../../models/propostas.model';
 import { GenericService } from '../../services/generic.service';
+import { CreatePropostaComponent } from './edit/create-proposta/create-proposta.component';
 import { EditPropostasComponent } from './edit/edit-propostas/edit-propostas.component';
 
 @Component({
@@ -30,6 +31,17 @@ export class PropostasComponent implements OnInit {
     });
   }
 
+  create() {
+    const dialogRef = this.dialog.open(CreatePropostaComponent, {
+      width: '35%',
+      height: '35%',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getPropostas();
+    });
+  }
+
   delete(id: number) {
     this.swalService
       .warning('Aviso', 'Deseja excluir a proposta?', 'Confirmar')
@@ -38,6 +50,7 @@ export class PropostasComponent implements OnInit {
           this.genericService.deleteProposta(id).subscribe({
             next: () => {
               this.swalService.success('Sucesso', 'Proposta excluida', 'Ok');
+              this.getPropostas();
             },
             error: () => {
               this.swalService.error(
@@ -51,13 +64,15 @@ export class PropostasComponent implements OnInit {
       });
   }
 
-  openDialog(id: number): void {
+  update(id: number): void {
     const dialogRef = this.dialog.open(EditPropostasComponent, {
-      width: '90%',
-      height: '90%',
-      data: id,
+      width: '35%',
+      height: '35%',
+      data: { id: id },
     });
 
-    dialogRef.afterClosed().subscribe((result) => {});
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getPropostas();
+    });
   }
 }

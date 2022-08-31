@@ -14,7 +14,7 @@ align-items: center;
 }
 
 input{
-  margin-bottom: 20px;
+  margin: .4rem;
 }
 
 div {
@@ -26,6 +26,10 @@ div {
   border-radius: 10px;
   height: 300px;
   width: 30%;
+}
+#manterLogado{
+  width:15px;
+  height:15px;
 }
 
 
