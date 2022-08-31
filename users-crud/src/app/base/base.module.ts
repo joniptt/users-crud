@@ -11,6 +11,7 @@ import { EditClientesComponent } from './pages/clientes/edit/edit-clientes/edit-
 import { MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { NgxMaskModule } from 'ngx-mask';
 import { CreatePropostaComponent } from './pages/propostas/edit/create-proposta/create-proposta.component';
+import { TrocarSenhaComponent } from './pages/trocar-senha/trocar-senha.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CreatePropostaComponent } from './pages/propostas/edit/create-proposta/
     RelatoriosComponent,
     EditClientesComponent,
     EditPropostasComponent,
-    CreatePropostaComponent
+    CreatePropostaComponent,
+    TrocarSenhaComponent
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   imports: [CommonModule, BaseRoutingModule,SharedModule,NgxMaskModule.forRoot()],
