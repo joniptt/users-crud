@@ -18,11 +18,12 @@
         <td class="p-1 text-center">{{ user?.name }}</td>
         <td class="p-1 text-center">{{ user?.email }}</td>
         <td class="p-1 text-center">{{ user?.type }}</td>
-        <td class="p-1 d-flex justify-content-around">
-          <button (click)="update(proposta?.id)">EDITAR</button>
-          <button (click)="delete(proposta?.id)" class="btn-danger">
-            EXCLUIR
-          </button>
+        <td
+          *ngIf="user?.type != 'Admin'"
+          class="p-1 d-flex justify-content-around"
+        >
+          <button (click)="update(user?.id)">EDITAR</button>
+          <button (click)="delete(user?.id)" class="btn-danger">EXCLUIR</button>
         </td>
       </tr>
     </table>

@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SwalService } from 'src/app/shared/services/swal.service';
 import { User } from '../../models/usuario.model';
 import { GenericService } from '../../services/generic.service';
-import { CreateUserComponent } from './edit/create-user/create-user.component';
+import { EditUserComponent } from './edit/edit-user/create-user.component';
 
 @Component({
   selector: 'app-usuarios',
@@ -32,9 +32,44 @@ export class UsuariosComponent implements OnInit {
   }
 
   create() {
-    const dialogRef = this.dialog.open(CreateUserComponent, {
+    const dialogRef = this.dialog.open(EditUserComponent, {
       width: '35%',
-      height: '40%',
+      height: '45%',
+      data: { id: null },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getUsers();
+    });
+  }
+
+  delete(id: number) {
+    this.swalService
+      .warning('Aviso', 'Deseja excluir usuário?', 'Confirmar')
+      .then((result) => {
+        if (result.isConfirmed) {
+          this.genericService.deleteUsuario(id).subscribe({
+            next: () => {
+              this.swalService.success('Sucesso', 'Usuario excluido', 'Ok');
+              this.getUsers();
+            },
+            error: () => {
+              this.swalService.error(
+                'Error',
+                'Ocorreu um erro ao tentar excluir o usuário',
+                'Ok'
+              );
+            },
+          });
+        }
+      });
+  }
+
+  update(id: number) {
+    const dialogRef = this.dialog.open(EditUserComponent, {
+      width: '35%',
+      height: '45%',
+      data: { id: id },
     });
 
     dialogRef.afterClosed().subscribe((result) => {

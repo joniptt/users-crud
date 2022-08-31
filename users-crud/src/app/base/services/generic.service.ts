@@ -19,6 +19,10 @@ export class GenericService {
     return this.http.get<Propostas[]>('propostas');
   }
 
+  getProposta(id: number): Observable<Propostas> {
+    return this.http.get<Propostas>(`proposta/${id}`);
+  }
+
   deleteProposta(id: number): Observable<any> {
     return this.http.delete(`proposta/${id}`);
   }
@@ -39,6 +43,17 @@ export class GenericService {
     return this.http.get<User[]>('usuarios');
   }
 
+  getUsuario(id: number): Observable<User> {
+    return this.http.get<User>(`usuario/${id}`);
+  }
+
+  patchUsuario(id: number, user: User): Observable<User> {
+    return this.http.patch<User>(`usuario/${id}`, user);
+  }
+
+  deleteUsuario(id: number): Observable<User> {
+    return this.http.delete<User>(`usuario/${id}`);
+  }
   getCliente(id: number): Observable<Client> {
     return this.http.get<Client>(`client/${id}`);
   }

@@ -14,15 +14,15 @@ import { SwalService } from 'src/app/shared/services/swal.service';
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.css'],
 })
-export class CreateUserComponent implements OnInit {
+export class EditUserComponent implements OnInit {
   createUser: UntypedFormGroup;
   user: User;
 
   constructor(
     private genericService: GenericService,
     private swalService: SwalService,
-    private dialogRef: MatDialogRef<CreateUserComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    private dialogRef: MatDialogRef<EditUserComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { id: number }
   ) {}
 
   ngOnInit(): void {
@@ -39,14 +39,53 @@ export class CreateUserComponent implements OnInit {
       password: new UntypedFormControl('', [
         Validators.required,
         Validators.minLength(8),
+        Validators.pattern(
+          RegExp(
+            /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-+_!@#$%^&.,?])(?!.*[\s]).+$/
+          )
+        ),
       ]),
       type: new UntypedFormControl('', [Validators.required]),
     });
+    if (this.data.id) {
+      this.getUser();
+    }
   }
 
-  create() {
+  getUser() {
+    this.genericService.getUsuario(this.data.id).subscribe({
+      next: (user) => {
+        const createUser = this.createUser;
+        createUser.get('name').patchValue(user.name);
+        createUser.get('email').patchValue(user.email);
+        createUser.get('type').patchValue(user.type);
+      },
+    });
+  }
+
+  sendForm() {
     if (this.createUser.valid) {
       this.user = { ...this.createUser.value };
+      if (this.data.id) {
+        this.genericService.patchUsuario(this.data.id, this.user).subscribe({
+          next: (data) => {
+            this.swalService
+              .success('Sucesso', 'Usuario atualizado com sucesso!', 'Ok')
+              .then(() => {
+                this.dialogRef.close();
+              });
+          },
+          error: (error) => {
+            this.swalService.error(
+              'Error',
+              error.error.message ??
+                'Ocorreu um erro ao tentar atualizar o usuario!',
+              'Ok'
+            );
+          },
+        });
+        return;
+      }
       this.genericService.createUsuario(this.user).subscribe({
         next: (data) => {
           this.swalService

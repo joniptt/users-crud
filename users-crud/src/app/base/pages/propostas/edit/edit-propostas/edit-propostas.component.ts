@@ -1,5 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Propostas } from 'src/app/base/models/propostas.model';
 import { GenericService } from 'src/app/base/services/generic.service';
@@ -29,6 +33,19 @@ export class EditPropostasComponent implements OnInit {
     this.editProposta = new UntypedFormGroup({
       description: new UntypedFormControl('', [Validators.required]),
       status: new UntypedFormControl('', [Validators.required]),
+    });
+    if (this.data.id) {
+      this.getProposta();
+    }
+  }
+
+  getProposta() {
+    this.genericService.getProposta(this.data.id).subscribe({
+      next: (proposta) => {
+        const editProposta = this.editProposta;
+        editProposta.get('description').patchValue(proposta.description);
+        editProposta.get('status').patchValue(proposta.status);
+      },
     });
   }
 

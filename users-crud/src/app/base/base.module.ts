@@ -12,7 +12,7 @@ import { EditPropostasComponent } from './pages/propostas/edit/edit-propostas/ed
 import { PropostasComponent } from './pages/propostas/propostas.component';
 import { RelatoriosComponent } from './pages/relatorios/relatorios.component';
 import { TrocarSenhaComponent } from './pages/trocar-senha/trocar-senha.component';
-import { CreateUserComponent } from './pages/usuarios/edit/create-user/create-user.component';
+import { EditUserComponent } from './pages/usuarios/edit/edit-user/create-user.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 
 @NgModule({
@@ -25,7 +25,7 @@ import { UsuariosComponent } from './pages/usuarios/usuarios.component';
     EditPropostasComponent,
     CreatePropostaComponent,
     UsuariosComponent,
-    CreateUserComponent,
+    EditUserComponent,
     TrocarSenhaComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
