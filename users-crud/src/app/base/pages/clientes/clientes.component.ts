@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SwalService } from 'src/app/shared/services/swal.service';
@@ -9,27 +8,36 @@ import { EditClientesComponent } from './edit/edit-clientes/edit-clientes.compon
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
-  styleUrls: ['./clientes.component.css']
+  styleUrls: ['./clientes.component.css'],
 })
 export class ClientesComponent implements OnInit {
-  clientes: any = []
-  constructor(public swal: SwalService, private genericService: GenericService, public dialog: MatDialog) { }
+  clientes: any = [];
+  constructor(
+    public swal: SwalService,
+    private genericService: GenericService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
-    this.loadClientes()
+    this.loadClientes();
   }
 
   openDialog(data: any) {
     const dialogRef = this.dialog.open(EditClientesComponent, { data: data });
-    dialogRef.afterClosed().subscribe(result => {
-      this.loadClientes()
+    dialogRef.afterClosed().subscribe((result) => {
+      this.loadClientes();
     });
   }
+
   loadClientes() {
     this.genericService.getClientes().subscribe({
       next: (data) => {
+        localStorage.setItem('clientes', JSON.stringify(data));
         this.clientes = data;
-      }
+      },
+      error: () => {
+        this.clientes = JSON.parse(localStorage.getItem('clientes'));
+      },
     });
   }
 
@@ -58,5 +66,4 @@ export class ClientesComponent implements OnInit {
   edit(client: Client) {
     this.openDialog(client);
   }
-
 }
