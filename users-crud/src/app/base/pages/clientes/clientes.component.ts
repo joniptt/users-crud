@@ -32,12 +32,8 @@ export class ClientesComponent implements OnInit {
   loadClientes() {
     this.genericService.getClientes().subscribe({
       next: (data) => {
-        localStorage.setItem('clientes', JSON.stringify(data));
         this.clientes = data;
-      },
-      error: () => {
-        this.clientes = JSON.parse(localStorage.getItem('clientes'));
-      },
+      }
     });
   }
 

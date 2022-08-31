@@ -55,7 +55,11 @@ export class EditClientesComponent implements OnInit {
   loadUsers() {
     this.genericService.getUsuarios().subscribe({
       next: (data) => {
+        localStorage.setItem('users', JSON.stringify(data));
         this.users = data;
+      },
+      error: () => {
+        this.users = JSON.parse(localStorage.getItem('users'));
       },
     });
   }
