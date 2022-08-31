@@ -27,6 +27,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     ReactiveFormsModule,
     MatSelectModule,
+    MatFormFieldModule,
   ],
 })
 export class SharedModule {}

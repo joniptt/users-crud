@@ -25,19 +25,29 @@ export class CreatePropostaComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+    this.getClientes();
+  }
+
+  getClientes() {
+    this.genericService.getClientes().subscribe({
+      next: (data) => {
+        this.clientes = data;
+      },
+    });
   }
 
   createForm() {
     this.cadProposta = new FormGroup({
       description: new FormControl('', [Validators.required]),
       status: new FormControl('', [Validators.required]),
+      cliente: new FormControl('', [Validators.required]),
     });
   }
 
   create() {
     if (this.cadProposta.valid) {
       this.proposta = { ...this.cadProposta.value };
-      this.genericService.patchProposta(this.data.id, this.proposta).subscribe({
+      this.genericService.postProposta(this.proposta).subscribe({
         next: (data) => {
           this.swalService
             .success('Sucesso', 'Proposta cadastrada com sucesso!', 'Ok')

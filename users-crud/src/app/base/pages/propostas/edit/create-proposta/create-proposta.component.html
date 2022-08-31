@@ -1,24 +1,24 @@
 <div class="modal-edit-container">
   <h2 class="mb-5">Cadastrar proposta</h2>
 
-  <mat-form-field appearance="outline">
-    <mat-select mat-input>
-      <mat-option *ngFor="let cliente of clientes" [value]="cliente.id">
-        {{ cliente.name }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
   <div>
     <form [formGroup]="cadProposta">
-      <mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Selecione o Cliente</mat-label>
+        <mat-select formControlName="cliente">
+          <mat-option *ngFor="let cliente of clientes" [value]="cliente.id">
+            {{ cliente.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
         <mat-label>Descrição</mat-label>
-        <div><input mat-input formControlName="description" type="text" /></div>
-      </mat-form-field>
-      <mat-form-field>
+        <input formControlName="description" type="text" />
+      </div>
+      <div>
         <mat-label>Status</mat-label>
-        <div><input mat-input formControlName="status" type="text" /></div>
-      </mat-form-field>
+        <input formControlName="status" type="text" />
+      </div>
       <footer mat-dialog-actions class="">
         <div>
           <button mat-button class="cancel" mat-dialog-close>Cancelar</button>
