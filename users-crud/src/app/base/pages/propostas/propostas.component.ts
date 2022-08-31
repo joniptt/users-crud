@@ -13,6 +13,8 @@ import { EditPropostasComponent } from './edit/edit-propostas/edit-propostas.com
 })
 export class PropostasComponent implements OnInit {
   propostas: Propostas[];
+  perm = localStorage.getItem('perm');
+
   constructor(
     private genericService: GenericService,
     public dialog: MatDialog,
@@ -34,7 +36,7 @@ export class PropostasComponent implements OnInit {
   create() {
     const dialogRef = this.dialog.open(CreatePropostaComponent, {
       width: '35%',
-      height: '45%',
+      height: '40%',
     });
 
     dialogRef.afterClosed().subscribe((result) => {

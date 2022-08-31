@@ -13,6 +13,9 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
+      <li *ngIf="perm === 'Admin'" class="nav-item active">
+        <a class="nav-link" [routerLink]="'/usuarios'">Usuarios</a>
+      </li>
       <li class="nav-item active">
         <a class="nav-link" [routerLink]="'/clientes'">Clientes</a>
       </li>

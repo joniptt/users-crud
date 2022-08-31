@@ -11,6 +11,8 @@ import { CreatePropostaComponent } from './pages/propostas/edit/create-proposta/
 import { EditPropostasComponent } from './pages/propostas/edit/edit-propostas/edit-propostas.component';
 import { PropostasComponent } from './pages/propostas/propostas.component';
 import { RelatoriosComponent } from './pages/relatorios/relatorios.component';
+import { CreateUserComponent } from './pages/usuarios/edit/create-user/create-user.component';
+import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { RelatoriosComponent } from './pages/relatorios/relatorios.component';
     EditClientesComponent,
     EditPropostasComponent,
     CreatePropostaComponent,
+    UsuariosComponent,
+    CreateUserComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [

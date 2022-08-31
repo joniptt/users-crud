@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Client } from '../models/clients.model';
 import { Propostas } from '../models/propostas.model';
+import { User } from '../models/usuario.model';
 
 @Injectable({
   providedIn: 'root',
@@ -26,8 +27,12 @@ export class GenericService {
     return this.http.patch<any>(`proposta/${id}`, proposta);
   }
 
-  getUsuarios(): Observable<any> {
-    return this.http.get<any>('usuarios');
+  createUsuario(user: User): Observable<User> {
+    return this.http.post<User>('usuario', user);
+  }
+
+  getUsuarios(): Observable<User[]> {
+    return this.http.get<User[]>('usuarios');
   }
 
   getClientes(): Observable<Client[]> {

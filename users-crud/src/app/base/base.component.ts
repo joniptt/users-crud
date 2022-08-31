@@ -7,13 +7,13 @@ import { AuthService } from '../auth/services/auth.service';
   styleUrls: ['./base.component.css'],
 })
 export class BaseComponent implements OnInit {
-  constructor(private authService:AuthService) {}
+  perm = localStorage.getItem('perm');
+
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {}
 
-
-  logout(){
+  logout() {
     this.authService.logout('login');
-
   }
 }
