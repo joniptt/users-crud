@@ -50,4 +50,9 @@ export class GenericService {
   deleteClient(id: number): Observable<any> {
     return this.http.delete(`client/${id}`);
   }
+
+  trocaSenha(password: string): Observable<any> {
+    return this.http.put(`usuario/alteraSenha`, { password: password });
+  }
+
 }
