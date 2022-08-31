@@ -8,7 +8,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { User } from 'src/app/base/models/usuario.model';
 import { GenericService } from 'src/app/base/services/generic.service';
 import { SwalService } from 'src/app/shared/services/swal.service';
-import * as crypto from 'crypto';
 
 @Component({
   selector: 'app-create-user',
@@ -66,10 +65,11 @@ export class EditUserComponent implements OnInit {
   }
 
   sendForm() {
-    if (this.createUser.valid) {
-      this.user = { ...this.createUser.value };
-      if (this.data.id) {
-        if(this.user.password == this.createUser.get('password').value) delete this.user.password
+
+    this.user = { ...this.createUser.value };
+    if (this.data.id) {
+      if (this.createUser.get('email').valid && this.createUser.get('nome').valid && this.createUser.get('type').valid) {
+        if (this.user.password == this.createUser.get('password').value) delete this.user.password
         this.genericService.patchUsuario(this.data.id, this.user).subscribe({
           next: (data) => {
             this.swalService
@@ -89,24 +89,31 @@ export class EditUserComponent implements OnInit {
         });
         return;
       }
-      this.genericService.createUsuario(this.user).subscribe({
-        next: (data) => {
-          this.swalService
-            .success('Sucesso', 'Usuario criado com sucesso!', 'Ok')
-            .then(() => {
-              this.dialogRef.close();
-            });
-        },
-        error: (err) => {
-          this.swalService.error(
-            'Error',
-            'Ocorreu um erro ao tentar criar o usuario!',
-            'Ok'
-          );
-        },
-      });
-      return;
+      this.swalService.warning('Aviso', 'Preencha os campos corretamente!', 'Ok');
+    } else {
+      if (this.createUser.valid) {
+        this.genericService.createUsuario(this.user).subscribe({
+          next: (data) => {
+            this.swalService
+              .success('Sucesso', 'Usuario criado com sucesso!', 'Ok')
+              .then(() => {
+                this.dialogRef.close();
+              });
+          },
+          error: (err) => {
+            this.swalService.error(
+              'Error',
+              'Ocorreu um erro ao tentar criar o usuario!',
+              'Ok'
+            );
+          },
+        });
+        return
+      }
+      this.swalService.warning('Aviso', 'Preencha os campos corretamente!', 'Ok');
     }
-    this.swalService.warning('Aviso', 'Preencha os campos corretamente!', 'Ok');
+
+
+
   }
 }
