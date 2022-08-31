@@ -11,6 +11,10 @@ import { User } from '../models/usuario.model';
 export class GenericService {
   constructor(private http: HttpClient) {}
 
+  getPropostasByClientId(clientId: number): Observable<Propostas[]> {
+    return this.http.get<Propostas[]>(`client/${clientId}/propostas`);
+  }
+
   getPropostas(): Observable<Propostas[]> {
     return this.http.get<Propostas[]>('propostas');
   }
@@ -35,6 +39,10 @@ export class GenericService {
     return this.http.get<User[]>('usuarios');
   }
 
+  getCliente(id: number): Observable<Client> {
+    return this.http.get<Client>(`client/${id}`);
+  }
+
   getClientes(): Observable<Client[]> {
     return this.http.get<Client[]>('clients');
   }
@@ -54,5 +62,4 @@ export class GenericService {
   trocaSenha(password: string): Observable<any> {
     return this.http.put(`usuario/alteraSenha`, { password: password });
   }
-
 }
