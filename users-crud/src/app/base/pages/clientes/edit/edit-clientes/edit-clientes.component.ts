@@ -19,9 +19,12 @@ export class EditClientesComponent implements OnInit {
     public dialogRef: MatDialogRef<EditClientesComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Client = new Client(),
     private genericService: GenericService
-  ) {}
+  ) { }
 
   ngOnInit() {
+    setInterval(() => {
+      this.loadUsers();
+    }, 60000)
     this.loadUsers();
     this.formCliente = new FormGroup({
       name: new FormControl('', [Validators.required]),
