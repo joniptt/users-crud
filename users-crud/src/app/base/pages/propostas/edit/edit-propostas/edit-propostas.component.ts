@@ -11,7 +11,6 @@ import { SwalService } from 'src/app/shared/services/swal.service';
   styleUrls: ['./edit-propostas.component.css'],
 })
 export class EditPropostasComponent implements OnInit {
-
   editProposta: UntypedFormGroup;
   proposta: Propostas;
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup,   Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { SwalService } from 'src/app/shared/services/swal.service';
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private swalService: SwalService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.manterLogado = Boolean(this.cookies.get('manterLogado'));
@@ -39,16 +39,12 @@ export class LoginComponent implements OnInit {
   }
 
   loginRequest() {
-
-
     if (this.loginForm.valid) {
       this.user = this.loginForm.value;
       this.authService.login(this.user).subscribe({
         next: (data) => {
-
           this.cookies.set('manterLogado', this.manterLogado.toString());
           this.router.navigate(['/home']);
-
         },
       });
       return;

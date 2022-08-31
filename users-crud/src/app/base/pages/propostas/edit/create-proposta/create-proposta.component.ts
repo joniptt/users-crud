@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Client } from 'src/app/base/models/clients.model';
 import { Propostas } from 'src/app/base/models/propostas.model';
@@ -12,7 +12,7 @@ import { SwalService } from 'src/app/shared/services/swal.service';
   styleUrls: ['./create-proposta.component.css'],
 })
 export class CreatePropostaComponent implements OnInit {
-  cadProposta: UntypedFormGroup;
+  cadProposta: FormGroup;
   clientes: Client[];
   proposta: Propostas;
 
@@ -25,19 +25,29 @@ export class CreatePropostaComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+    this.getClientes();
+  }
+
+  getClientes() {
+    this.genericService.getClientes().subscribe({
+      next: (data) => {
+        this.clientes = data;
+      },
+    });
   }
 
   createForm() {
-    this.cadProposta = new UntypedFormGroup({
-      description: new UntypedFormControl('', [Validators.required]),
-      status: new UntypedFormControl('', [Validators.required]),
+    this.cadProposta = new FormGroup({
+      description: new FormControl('', [Validators.required]),
+      status: new FormControl('', [Validators.required]),
+      cliente: new FormControl('', [Validators.required]),
     });
   }
 
   create() {
     if (this.cadProposta.valid) {
       this.proposta = { ...this.cadProposta.value };
-      this.genericService.patchProposta(this.data.id, this.proposta).subscribe({
+      this.genericService.postProposta(this.proposta).subscribe({
         next: (data) => {
           this.swalService
             .success('Sucesso', 'Proposta cadastrada com sucesso!', 'Ok')

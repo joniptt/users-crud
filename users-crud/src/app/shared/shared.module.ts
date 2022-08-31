@@ -1,25 +1,33 @@
 import { CommonModule } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
-
-
-
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
-  imports: [CommonModule,
+  imports: [
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
     FormsModule,
-    MatInputModule,    
+    MatInputModule,
     MatFormFieldModule,
-    ReactiveFormsModule,MatSelectModule,],
-  exports: [CommonModule, FormsModule, ReactiveFormsModule, MatDialogModule, FormsModule, MatInputModule, ReactiveFormsModule,MatSelectModule],
-
+    ReactiveFormsModule,
+    MatSelectModule,
+  ],
+  exports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    FormsModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatFormFieldModule,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

@@ -8,17 +8,19 @@ import { Propostas } from '../models/propostas.model';
   providedIn: 'root',
 })
 export class GenericService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getPropostas(): Observable<Propostas[]> {
     return this.http.get<Propostas[]>('propostas');
   }
 
-
   deleteProposta(id: number): Observable<any> {
     return this.http.delete(`proposta/${id}`);
   }
 
+  postProposta(proposta: Propostas): Observable<Propostas> {
+    return this.http.post<Propostas>('proposta', proposta);
+  }
 
   patchProposta(id: number, proposta: Propostas): Observable<any> {
     return this.http.patch<any>(`proposta/${id}`, proposta);
