@@ -9,13 +9,10 @@ import { TrocarSenhaComponent } from './pages/trocar-senha/trocar-senha.componen
   styleUrls: ['./base.component.css'],
 })
 export class BaseComponent implements OnInit {
-  constructor(private authService: AuthService,public dialog: MatDialog) { }
+  constructor(private authService: AuthService, public dialog: MatDialog) {}
   perm = localStorage.getItem('perm');
 
-  constructor(private authService: AuthService) {}
-
-  ngOnInit(): void { }
-
+  ngOnInit(): void {}
 
   logout() {
     this.authService.logout('login');
@@ -23,6 +20,5 @@ export class BaseComponent implements OnInit {
 
   trocaSenha() {
     this.dialog.open(TrocarSenhaComponent);
-    
   }
 }
