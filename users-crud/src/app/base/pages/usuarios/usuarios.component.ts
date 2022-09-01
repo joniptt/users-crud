@@ -53,12 +53,8 @@ export class UsuariosComponent implements OnInit {
               this.swalService.success('Sucesso', 'Usuario excluido', 'Ok');
               this.getUsers();
             },
-            error: () => {
-              this.swalService.error(
-                'Error',
-                'Ocorreu um erro ao tentar excluir o usuário',
-                'Ok'
-              );
+            error: (data) => {
+              this.swalService.error('Error', data.error.message, 'Ok');
             },
           });
         }
