@@ -23,7 +23,7 @@ export class EditUserComponent implements OnInit {
     private swalService: SwalService,
     private dialogRef: MatDialogRef<EditUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { id: number }
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -65,11 +65,11 @@ export class EditUserComponent implements OnInit {
   }
 
   sendForm() {
-
     this.user = { ...this.createUser.value };
     if (this.data.id) {
-      if (this.createUser.get('email').valid && this.createUser.get('nome').valid && this.createUser.get('type').valid) {
+      if (this.createUser.get('email').valid && this.createUser.get('name').valid && this.createUser.get('type').valid) {
         if (this.user.password == this.createUser.get('password').value) delete this.user.password
+
         this.genericService.patchUsuario(this.data.id, this.user).subscribe({
           next: (data) => {
             this.swalService
@@ -82,7 +82,7 @@ export class EditUserComponent implements OnInit {
             this.swalService.error(
               'Error',
               error.error.message ??
-              'Ocorreu um erro ao tentar atualizar o usuario!',
+                'Ocorreu um erro ao tentar atualizar o usuario!',
               'Ok'
             );
           },
